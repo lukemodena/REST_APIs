@@ -34,11 +34,11 @@ my_data = '''
 {
     "Address": {
         "CountryCode": "GB",
-        "Line1": "Send Barns Stables, Woodhill",
-        "Line2": "Send, Woking",
-        "Line3": "Surrey",
+        "Line1": "ADDRESS_LINE_1",
+        "Line2": "ADDRESS_LINE_2",
+        "Line3": "ADDRESS_LINE_3",
         "Line4": null,
-        "PostCode": "GU23 7JR"
+        "PostCode": "POSTCODE"
     },
     "AutomaticCreditControlEnabled": true,
     "Currency": {
