@@ -1,7 +1,7 @@
 // Create (POST) Invoice on QuickBooks Online
 
 const options = {
-  url: `https://quickbooks.api.intuit.com/v3/company/${process.env.COMPANY_ID}/estimate?minorversion=65`,
+  url: `https://quickbooks.api.intuit.com/v3/company/${process.env.COMPANY_ID}/invoice?minorversion=65`,
   method: 'POST',
   headers: {
 'Authorization': `Bearer ${bundle.authData.access_token}`,
