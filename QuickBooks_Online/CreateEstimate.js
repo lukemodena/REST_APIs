@@ -20,7 +20,7 @@ const getEmail = (inputValue) => {
 
 if (bundle.inputData.Second === true){
   const options = {
-  url: 'https://quickbooks.api.intuit.com/v3/company/process.env.COMPANY_ID/estimate?minorversion=65',
+  url: `https://quickbooks.api.intuit.com/v3/company/${process.env.COMPANY_ID}/estimate?minorversion=65`,
   method: 'POST',
   headers: {
 'Authorization': `Bearer ${bundle.authData.access_token}`,
@@ -124,7 +124,7 @@ return z.request(options)
   });
 } else {
   const options = {
-    url: 'https://quickbooks.api.intuit.com/v3/company/process.env.COMPANY_ID/estimate?minorversion=65',
+    url: `https://quickbooks.api.intuit.com/v3/company/${process.env.COMPANY_ID}/estimate?minorversion=65`,
     method: 'POST',
     headers: {
   'Authorization': `Bearer ${bundle.authData.access_token}`,
