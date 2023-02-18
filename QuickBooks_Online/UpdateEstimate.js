@@ -79,8 +79,6 @@ if (bundle.inputData.LineNumber === "1"){
                 response.throwForStatus();
                 const results = z.JSON.parse(response.content);
       
-                // You can do any parsing you need for results here before returning them
-      
                 return results;
         });
     } catch (err) {
@@ -142,8 +140,6 @@ if (bundle.inputData.LineNumber === "1"){
               .then((response) => {
                 response.throwForStatus();
                 const results = z.JSON.parse(response.content);
-      
-                // You can do any parsing you need for results here before returning them
       
                 return results;
         });
@@ -209,8 +205,6 @@ if (bundle.inputData.LineNumber === "1"){
                 response.throwForStatus();
                 const results = z.JSON.parse(response.content);
       
-                // You can do any parsing you need for results here before returning them
-      
                 return results;
         });
     
@@ -273,8 +267,6 @@ if (bundle.inputData.LineNumber === "1"){
               .then((response) => {
                 response.throwForStatus();
                 const results = z.JSON.parse(response.content);
-      
-                // You can do any parsing you need for results here before returning them
       
                 return results;
         });
