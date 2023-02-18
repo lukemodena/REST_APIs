@@ -32,10 +32,10 @@ my_data = '''
         "DisplaySymbolOnRight": false
     },
     "CurrencyName": null,
-    "CustomerCode": input_data['CustomerCode'],
+    "CustomerCode": COMPANY_CODE,
     "CustomerDiscount": 0.0000,
-    "CustomerName": input_data['CustomerName'],
-    "Date": input_data['Date'],
+    "CustomerName": "COMPANY_NAME",
+    "Date": "",
     "DefaultChargeType": 9998,
     "Ec": 0,
     "GrossAmount": 120.0000,
