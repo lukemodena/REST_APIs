@@ -1,0 +1,92 @@
+// Create (POST) Customer on QuickBooks Online
+
+if (bundle.inputData.Customer === true) {
+
+    // Create Direct Customer
+    
+    const options = {
+        url: `https://quickbooks.api.intuit.com/v3/company/${process.env.COMPANY_ID}/customer?minorversion=65`,
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${bundle.authData.access_token}`
+        },
+        params: {
+    
+        },
+        body: {
+        "FullyQualifiedName": `${bundle.inputData.Name}`, 
+        "DisplayName": `${bundle.inputData.Name}`, 
+        "PrimaryPhone": {
+            "FreeFormNumber": `${bundle.inputData.Phone1}`
+        }, 
+        "CompanyName": `${bundle.inputData.Name}`, 
+        "BillAddr": {
+            "CountrySubDivisionCode": `${bundle.inputData.County}`, 
+            "City": `${bundle.inputData.City}`,  
+            "PostalCode": `${bundle.inputData.PostalCode}`, 
+            "Line1": `${bundle.inputData.Line1}`, 
+            "Country": `${bundle.inputData.Country}`
+        }
+      }
+    }
+    
+    return z.request(options)
+        .then((response) => {
+        response.throwForStatus();
+        const results = response.json;
+    
+        return results;
+        });
+} else {
+
+    // Create Sub-Customer
+    
+    const options = {
+        url: `https://quickbooks.api.intuit.com/v3/company/${process.env.COMPANY_ID}/customer?minorversion=65`,
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${bundle.authData.access_token}`
+        },
+        params: {
+    
+        },
+        body: {
+        "FullyQualifiedName": `${bundle.inputData.Name}`, 
+        "PrimaryEmailAddr": {
+            "Address": "MAIN_COMPANY_PrimaryEmailAddr"
+        }, 
+        "DisplayName": `${bundle.inputData.Name}`, 
+        "PrimaryPhone": {
+            "FreeFormNumber": "MAIN_COMPANY_PrimaryPhone"
+        }, 
+        "Mobile": {
+            "FreeFormNumber": "MAIN_COMPANY_Mobile"
+        },
+        "CompanyName": `${bundle.inputData.MainCompanyName}`, 
+        "BillAddr": {
+            "CountrySubDivisionCode": "MAIN_COMPANY_CountrySubDivisionCode", 
+            "City": "MAIN_COMPANY_City", 
+            "PostalCode": "MAIN_COMPANY_PostalCode", 
+            "Line1": "MAIN_COMPANY_Line1", 
+            "Country": "MAIN_COMPANY_Country"
+        }, 
+        "Job": true,
+        "ParentRef": {
+            "value": `${bundle.inputData.MainCompanyRef}`,
+            "name": `${bundle.inputData.MainCompanyName}`
+        }
+        }
+    }
+    
+    return z.request(options)
+        .then((response) => {
+        response.throwForStatus();
+        const results = response.json;
+    
+        return results;
+        });
+}
