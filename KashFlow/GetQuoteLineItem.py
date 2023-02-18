@@ -10,4 +10,4 @@ my_headers = {
 }
 response = requests.get(f'https://api.kashflow.com/v2/quotes/{input_data['QuoteID']}', headers=my_headers)
 
-output = response.json()["LineItems"][1]
+output = response.json()["LineItems"][input_data['LineItem']]
