@@ -1,4 +1,3 @@
-
 // Get Main Invoicing Customer Email
 
 const getEmail = (inputValue) => {
