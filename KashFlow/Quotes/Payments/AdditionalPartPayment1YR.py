@@ -1,6 +1,8 @@
 import json
 from datetime import date, datetime
 
+#### There were 5 variations of this ####
+
 # First CY
 
 Description1 = input_data['Description1']
@@ -13,16 +15,42 @@ Description2 = input_data['Description2']
 Rate2 = float(input_data['Rate2'])      
 VATAmount2 = float(input_data['VATAmount2'])
 
+# Second Part Payment
+
+Description3 = input_data['Description3']
+Rate3 = float(input_data['Rate3'])      
+VATAmount3 = float(input_data['VATAmount3'])
+
+# Third Part Payment
+
+Description4 = input_data['Description4']
+Rate4 = float(input_data['Rate4'])      
+VATAmount4 = float(input_data['VATAmount4'])
+
+# Fourth Part Payment
+
+Description5 = input_data['Description5']
+Rate5 = float(input_data['Rate5'])      
+VATAmount5 = float(input_data['VATAmount5'])
+
+# Fifth Part Payment
+
+Description6 = input_data['Description6']
+Rate6 = float(input_data['Rate6'])      
+VATAmount6 = float(input_data['VATAmount6'])
+
 # New Part Payment
 
 now = datetime.now()
 desctoday = now.strftime("%d/%m/%Y")
-Description3 = """- Part payment of £{} recieved {}
-Invoice No: {}""".format(input_data['Payment'], desctoday, input_data['InvoiceNo'])
+Description7 = """{}
+- Part payment of £{} recieved {}
+Invoice No: {}""".format(Description6, input_data['Payment'], desctoday, input_data['InvoiceNo'])
 TotalRate = float(input_data['Payment'])      
 RatePrep = TotalRate/1.2
-Rate3 = -abs(RatePrep)
-VATAmount3 = -abs(TotalRate - RatePrep)
+Rate7 = -abs(RatePrep) + Rate6
+VATAmount7 = -abs(TotalRate - RatePrep) + VATAmount6
+
 
 # dd/mm/YY H:M:S
 today = now.strftime("%Y-%m-%d %H:%M:%S +00:00")
@@ -86,7 +114,46 @@ my_data = '''
         "Quantity": 1,
         "HomeCurrencyRate": 10.0000,
         "HomeCurrencyVATAmount": 20.0000,
-        "Number": 0,
+        "Number": 3,
+        "VATExempt": false,
+        "VATLevel": 20.0000,
+        "TaxCode": "",
+        "Rate": 0,
+        "VATAmount": 0
+    }, {
+        "NominalCode": 4906,
+        "Description": "",
+        "ProductCode": "ANNU0002",
+        "Quantity": 1,
+        "HomeCurrencyRate": 10.0000,
+        "HomeCurrencyVATAmount": 20.0000,
+        "Number": 4,
+        "VATExempt": false,
+        "VATLevel": 20.0000,
+        "TaxCode": "",
+        "Rate": 0,
+        "VATAmount": 0
+    }, {
+        "NominalCode": 4906,
+        "Description": "",
+        "ProductCode": "ANNU0002",
+        "Quantity": 1,
+        "HomeCurrencyRate": 10.0000,
+        "HomeCurrencyVATAmount": 20.0000,
+        "Number": 5,
+        "VATExempt": false,
+        "VATLevel": 20.0000,
+        "TaxCode": "",
+        "Rate": 0,
+        "VATAmount": 0
+    }, {
+        "NominalCode": 4906,
+        "Description": "",
+        "ProductCode": "ANNU0002",
+        "Quantity": 1,
+        "HomeCurrencyRate": 10.0000,
+        "HomeCurrencyVATAmount": 20.0000,
+        "Number": 6,
         "VATExempt": false,
         "VATLevel": 20.0000,
         "TaxCode": "",
@@ -126,6 +193,15 @@ x['LineItems'][1]['VATAmount'] = VATAmount2
 x['LineItems'][2]['Rate'] = Rate3
 x['LineItems'][2]['Description'] = Description3
 x['LineItems'][2]['VATAmount'] = VATAmount3
+x['LineItems'][3]['Rate'] = Rate4
+x['LineItems'][3]['Description'] = Description4
+x['LineItems'][3]['VATAmount'] = VATAmount4
+x['LineItems'][4]['Rate'] = Rate5
+x['LineItems'][4]['Description'] = Description5
+x['LineItems'][4]['VATAmount'] = VATAmount5
+x['LineItems'][5]['Rate'] = Rate7
+x['LineItems'][5]['Description'] = Description7
+x['LineItems'][5]['VATAmount'] = VATAmount7
 
 y = json.dumps(x, indent=4)
 my_headers = {
